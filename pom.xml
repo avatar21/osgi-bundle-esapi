@@ -1,0 +1,162 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.lucee</groupId>
+  <artifactId>esapi</artifactId>
+  <version>2.1.0.1</version>
+  <name>ESAPI</name>
+  <packaging>bundle</packaging>
+
+  <description>OSGi Version of ESAPI</description>
+  <url>http://maven.lucee.org/esapi/</url>
+
+  <!-- same license as the original jar -->
+  <licenses>
+
+    <license>
+		<name>BSD License</name>
+		<url>http://www.opensource.org/licenses/bsd-license.php</url>
+		<distribution>repo</distribution>
+	</license>
+
+
+	<license>
+		<name>Creative Commons 3.0 BY-SA</name>
+		<url>http://creativecommons.org/licenses/by-sa/3.0/</url>
+		<comments>Content License - Create Commons 3.0 BY-SA</comments>
+	</license>
+
+  </licenses>
+
+  <developers>
+
+    <developer>
+      <id>micstriit</id>
+      <name>Michael Offner</name>
+      <email>michael@lucee.org</email>
+      <organization>Lucee Association Switzerland</organization>
+      <organizationUrl>http://lucee.org</organizationUrl>
+      <roles>
+        <role>Project-Administrator</role>
+        <role>Developer</role>
+      </roles>
+      <timezone>+1</timezone>
+    </developer>
+
+  </developers>
+
+  <build>
+    <plugins>
+      <plugin>
+      <groupId>org.sonatype.plugins</groupId>
+      <artifactId>nexus-staging-maven-plugin</artifactId>
+      <version>1.6.3</version>
+      <extensions>true</extensions>
+      <configuration>
+        <serverId>ossrh</serverId>
+        <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+        <autoReleaseAfterClose>true</autoReleaseAfterClose>
+      </configuration>
+    </plugin>
+
+    <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-gpg-plugin</artifactId>
+      <version>1.5</version>
+      <executions>
+        <execution>
+          <id>sign-artifacts</id>
+          <phase>verify</phase>
+          <goals>
+            <goal>sign</goal>
+          </goals>
+        </execution>
+      </executions>
+    </plugin>
+
+    <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-release-plugin</artifactId>
+      <version>2.5</version>
+      <configuration>
+        <autoVersionSubmodules>true</autoVersionSubmodules>
+        <useReleaseProfile>false</useReleaseProfile>
+        <releaseProfiles>release</releaseProfiles>
+        <goals>deploy</goals>
+      </configuration>
+    </plugin>
+
+    <plugin>
+         <groupId>org.apache.maven.plugins</groupId>
+         <artifactId>maven-dependency-plugin</artifactId>
+         <version>2.10</version>
+         <executions>
+           <execution>
+             <id>unpack</id>
+             <phase>validate</phase>
+             <goals>
+               <goal>unpack</goal>
+             </goals>
+             <configuration>
+               <artifactItems>
+                 <artifactItem>
+                   <groupId>org.owasp.esapi</groupId>
+                    <artifactId>esapi</artifactId>
+                    <version>2.1.0.1</version>
+                   <type>jar</type>
+                   <overWrite>false</overWrite>
+                   <outputDirectory>${project.build.directory}/classes</outputDirectory>
+                 </artifactItem>
+               </artifactItems>
+               <overWriteReleases>true</overWriteReleases>
+               <overWriteSnapshots>true</overWriteSnapshots>
+             </configuration>
+           </execution>
+         </executions>
+       </plugin>
+
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <version>3.0.1</version>
+        <configuration>
+          <unpackBundle>true</unpackBundle>
+          <instructions>
+            <Bundle-Name>org.lucee.esapi</Bundle-Name>
+            <Bundle-SymbolicName>org.lucee.esapi</Bundle-SymbolicName>
+            <Bundle-Description>OSGI version of jar ${project.name}</Bundle-Description>
+            <Export-Package>*</Export-Package>
+            <!-- <Require-Bundle></Require-Bundle> -->
+            <!-- <Require-Bundle-Fragment></Require-Bundle-Fragment> -->
+            <!-- <Import-Package>*</Import-Package> -->
+            <!-- <DynamicImport-Package>*</DynamicImport-Package> -->
+            <!-- <Fragment-Host></Fragment-Host> -->
+          </instructions>
+        </configuration>
+        <extensions>true</extensions>
+      </plugin>
+
+
+    </plugins>
+  </build>
+  
+
+
+  <scm>
+    <url>https://github.com/lucee/osgi-bundle-esapi</url>
+    <connection>scm:git:git://github.com/lucee/osgi-bundle-esapi.git</connection>
+    <developerConnection>scm:git:git@github.com:lucee/osgi-bundle-esapi.git</developerConnection>
+    <tag>ESAPI OSGi library</tag>
+  </scm>
+
+  <distributionManagement>
+    <repository>
+    <id>ossrh</id>
+    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+  </repository>
+    <snapshotRepository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
+
+</project>
