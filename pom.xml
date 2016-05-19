@@ -127,8 +127,11 @@
             <Export-Package>*</Export-Package>
             <!-- <Require-Bundle></Require-Bundle> -->
             <!-- <Require-Bundle-Fragment></Require-Bundle-Fragment> -->
-            <!-- <Import-Package>*</Import-Package> -->
-            <!-- <DynamicImport-Package>*</DynamicImport-Package> -->
+            <Import-Package>
+!org.apache.commons.collections.iterators,!org.apache.commons.beanutils,!nu.xom,!bsh,!org.apache.commons.configuration,!org.owasp.validator.html,*</Import-Package>
+
+<DynamicImport-Package>
+org.apache.commons.collections.iterators,org.apache.commons.beanutils,nu.xom,bsh,org.apache.commons.configuration,org.owasp.validator.html</DynamicImport-Package>
             <!-- <Fragment-Host></Fragment-Host> -->
           </instructions>
         </configuration>
