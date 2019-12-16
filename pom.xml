@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.lucee</groupId>
-  <artifactId>esapi</artifactId>
+  <groupId>com.github.avatar21</groupId>
+  <artifactId>org.owasp.esapi</artifactId>
   <version>2.1.0.1</version>
   <name>ESAPI</name>
   <packaging>bundle</packaging>
@@ -30,16 +30,16 @@
   <developers>
 
     <developer>
-      <id>micstriit</id>
-      <name>Michael Offner</name>
-      <email>michael@lucee.org</email>
-      <organization>Lucee Association Switzerland</organization>
-      <organizationUrl>http://lucee.org</organizationUrl>
+      <id>avatar21</id>
+      <name>Avatar Ng</name>
+      <email>avatar21@github.com</email>
+      <organization>Minfaatong</organization>
+      <organizationUrl>http://github.com/avatar21</organizationUrl>
       <roles>
         <role>Project-Administrator</role>
         <role>Developer</role>
       </roles>
-      <timezone>+1</timezone>
+      <timezone>+8</timezone>
     </developer>
 
   </developers>
@@ -121,8 +121,8 @@
         <configuration>
           <unpackBundle>true</unpackBundle>
           <instructions>
-            <Bundle-Name>org.lucee.esapi</Bundle-Name>
-            <Bundle-SymbolicName>org.lucee.esapi</Bundle-SymbolicName>
+            <Bundle-Name>org.owasp.esapi</Bundle-Name>
+            <Bundle-SymbolicName>org.owasp.esapi</Bundle-SymbolicName>
             <Bundle-Description>OSGI version of jar ${project.name}</Bundle-Description>
             <Export-Package>*</Export-Package>
             <!-- <Require-Bundle></Require-Bundle> -->
@@ -146,8 +146,8 @@ org.apache.commons.collections.iterators,org.apache.commons.beanutils,nu.xom,bsh
 
   <scm>
     <url>https://github.com/lucee/osgi-bundle-esapi</url>
-    <connection>scm:git:git://github.com/lucee/osgi-bundle-esapi.git</connection>
-    <developerConnection>scm:git:git@github.com:lucee/osgi-bundle-esapi.git</developerConnection>
+    <connection>scm:git:git://github.com/avatar21/osgi-bundle-esapi.git</connection>
+    <developerConnection>scm:git:git@github.com:avatar21/osgi-bundle-esapi.git</developerConnection>
     <tag>ESAPI OSGi library</tag>
   </scm>
 
